@@ -1,33 +1,243 @@
-.App {
+/* 
+.bgimg{
+  background-image: url("./images/score.jpg");
+  background-repeat: no-repeat;
+  min-height: 600px;
+  background-size: cover;
+  background-position: center;
+  min-height: 100%;
+  min-width: 1024px;
+	
+  width: 100%;
+  height: auto;
+	
+  position: fixed;
+  top: 0;
+  left: 0;
+
+} */
+
+.bgi{
+  background-image: url("./images/back.jpg");
+  min-height: 600px;
+}
+.bgqz{
+  background-image: url('./images/quiz.jpg');
+  background-repeat: no-repeat;
+  min-height: 600px;
+  background-size: cover;
+  background-position: center;
+  min-height: 100%;
+  min-width: 1024px;
+	
+  width: 100%;
+  height: auto;
+	
+  position: fixed;
+  top: 0;
+  left: 0;
+ 
+}
+.cream{
+  background-image: url('./images/web-design-background-image-1024x463.jpg');
+  background-attachment: fixed;
+
+  background-repeat: no-repeat;
+  min-height: 600px;
+  background-size: cover;
+  background-position: center;
+  min-height: 100%;
+  min-width: 1024px;
+	
+  width: 100%;
+  height: auto;
+	
+  top: 0;
+  left: 0;
+}
+.hc{
+  color: darkorange;
   text-align: center;
+  text-decoration-style: wavy;
+}
+.exbg{
+  background-color: lightgray;
+  
+}
+.cdbg{
+  background-image: url('./images/web-design-worcestershire-responsive-slider-bg.jpg');
+
+   /* background-color: lightgrey;  */
+   /* background-image: url('./images/Light-Grey-Background-Texture-4.jpg')  */
+
+
+}
+.flex{
+  display:flex;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+/* .image{
+  background-image: url(/src/components/img.jpg)
+} */
+
+.back{
+  background-image: url("./images/71761924-writing-planning-or-preparing-to-exam-background-study-and-work-in-office-mockup-top-view-of-spiral-.jpg");
+ background-repeat: no-repeat;
+ background-size: cover;
+ 
+ /* background-position: 100%; */
+}
+.res{
+  background-image: url('https://thumbs.dreamstime.com/z/word-results-background-45282230.jpg');
+  min-height: 600px;
+}
+.qzb{
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTakOQ-4EfWnWGeTrXcoyJaOWFU8IBpc8fiI-SsfXyZchPwYSsG');
+  min-height: 600px;
+  
+}
+.bgi2{
+  background-image: url("https://media.gettyimages.com/photos/college-students-taking-test-at-desk-in-classroom-picture-id683736243?s=2048x2048");
+  
+}
+.bg{
+  background-image: url("./images/instruction.jpeg");
+  min-height: 600px;
+}
+.exambg{
+  background-image: url("./images/exam.jpg");
+  min-height: 600px;
+
+
+}
+.viewbg{
+  background-image: url('./images/view.jpg');
+  background-attachment: fixed;
+
+  background-repeat: no-repeat;
+  min-height: 600px;
+  background-size: cover;
+  background-position: center;
+  min-height: 100%;
+  min-width: 1024px;
+	
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+	
+  /* Set up positioning */
+  top: 0;
+  left: 0;
+ 
+}
+.login{
+  background-image: url('./images/gradient-background-26046-26731-hd-wallpapers.jpg.png');
+  background-attachment: fixed;
+
+  background-repeat: no-repeat;
+  min-height: 600px;
+  background-size: cover;
+  background-position: center;
+  min-height: 100%;
+  min-width: 1024px;
+	
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+	
+  /* Set up positioning */
+  top: 0;
+  left: 0;
+}
+.logincard{
+  background-image: url('./images/gradient-background-26046-26731-hd-wallpapers.jpg.png');
+
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.register{
+  background-image: url('./images/light-gradient.jpg');
+
+  /* Full height */
+  height: 100%; 
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.App-link {
-  color: #61dafb;
-}
+/* .loginbg{
+  background-image: url('./images/Ridge-Design-Website-Design-Background.jpg');
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+} */
+
+.quizcard{
+  background-image: url('./images/light-pink-plain-background-light-pink-plain-background-hd-light-pink-backgrounds-pixelstalk-net.jpg');
+
+}
+.questioncard{
+  background-image: url('./images/22688_How-To-Blur-Background-On-iPhone_w1120_blur.jpg');
+}
+.viewcard{
+  background-color: lightgrey
+}
+.result{
+  background-image: url('./images/light-gradient.jpg');
+  background-attachment: fixed;
+
+  background-repeat: no-repeat;
+  min-height: 600px;
+  background-size: cover;
+  background-position: center;
+  min-height: 100%;
+  min-width: 1024px;
+	
+  width: 100%;
+  height: auto;
+	
+  top: 0;
+  left: 0;
+}
+.scorecard{
+  background-image: url('./images/light-brown-wooden-textured-background_53876-75016.jpg');
+
+  /* background-color:; */
+  /* flood-opacity: 0; */
+  /* background-color: rgba(255, 255, 255, 0.6); */
+
+}
+.score{
+  /* opacity: 1; */
+}
+.landing{
+  background-image: url('./images/71761924-writing-planning-or-preparing-to-exam-background-study-and-work-in-office-mockup-top-view-of-spiral-.jpg');
+  background-attachment: fixed;
+
+  background-repeat: no-repeat;
+  min-height: 600px;
+  background-size: cover;
+  background-position: center;
+  min-height: 100%;
+  min-width: 1024px;
+	
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+	
+  /* Set up positioning */
+  top: 0;
+  left: 0;
+}
+.examcard{
+  background-image: url('./images/web-design-worcestershire-responsive-slider-bg.jpg');
+
+}
+.logo{
+  font-family: "Times New Roman", Times, serif;
+  font-style: italic;
+  font-size: 40px;
+  font-weight: bold;
+  text-shadow: 3px 2px blue;
+  
+
 }
