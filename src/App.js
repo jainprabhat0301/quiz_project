@@ -216,7 +216,7 @@ const firebaseConfig = {
 console.log("did mount user",this.state.user.email)
 
 //------------------------Get Quiz-------------//
-    axios.get("http://localhost:8081/getquiz").then((res)=>
+    axios.get("/getquiz").then((res)=>
     {
       //console.log(res.data)
 let db=this.state.db
@@ -364,7 +364,7 @@ emailSignUp=()=>{
      let obj={qname:this.state.arr.qname,total:0,points:this.state.arr.points,hr:this.state.arr.hr,
                 min:this.state.arr.min,sec:this.state.arr.sec,typeq:this.state.arr.typeq}
 
-  axios.post('http://localhost:8081/quiz/',obj)
+  axios.post('/quiz/',obj)
   .then((res)=>{
   console.log(res.data)
    })  
@@ -416,7 +416,7 @@ emailSignUp=()=>{
                 op4:this.state.ques.op4,correctop:this.state.ques.correctop,status:this.state.status}
         
 
-        axios.post('http://localhost:8081/question/',obj)
+        axios.post('/question/',obj)
       .then((res)=>{      
           })      
   
@@ -433,7 +433,7 @@ emailSignUp=()=>{
           
       db.cquiz.total+=1
 
-      axios.put('http://localhost:8081/updatetotal/'+db.cquiz.qname, { total: db.cquiz.total }) .then(response => {
+      axios.put('/updatetotal/'+db.cquiz.qname, { total: db.cquiz.total }) .then(response => {
           console.log(response);
           })
       .catch(error => {
@@ -473,7 +473,7 @@ console.log("this.state.db.cquiz",this.state.db.cquiz)
       db.cquiz=p
       this.setState({db:db})
 
-      axios.delete('http://localhost:8081/delquiz/'+p.qname).then((res)=>{ //Delete Quiz
+      axios.delete('/delquiz/'+p.qname).then((res)=>{ //Delete Quiz
         console.log("I Have Done It")
 
         console.log(res.data)
@@ -607,7 +607,7 @@ console.log("hr,min,sec",hour,minu,seco)
    let obj={uid:this.state.useremail,quizname:this.state.db.cquiz.qname,total:this.state.db.cquiz.total,marks:marks,correctans:count,
             attempt:attempt,points:this.state.db.cquiz.points,time:time,quizdate:quizdate}
 
-    axios.post('http://localhost:8081/score/',obj)
+    axios.post('/score/',obj)
     .then((res)=>{
     console.log(res.data)
         }) 
@@ -670,13 +670,13 @@ unmarkquestion(){
 delquestion(p){
   let db=this.state.db
 
-  axios.delete('http://localhost:8081/delquestion/'+p.quesname).then((res)=>{
+  axios.delete('/delquestion/'+p.quesname).then((res)=>{
     console.log("I Have Done It") 
     console.log(res.data)
 })
   db.cquiz.total-=1
 
-  axios.put('http://localhost:8081/updatetotal/'+db.cquiz.qname, { total: db.cquiz.total }) .then(response => {
+  axios.put('/updatetotal/'+db.cquiz.qname, { total: db.cquiz.total }) .then(response => {
       console.log(response);
       })
   .catch(error => {
@@ -751,7 +751,7 @@ var time = (db.cquiz.hr * 60 * 60) + (db.cquiz.min * 60) + (db.cquiz.sec)
 
 viewresult(){ 
 console.log("email",this.state.useremail)
-  axios.get('http://localhost:8081/viewresult/'+this.state.useremail).then((res)=>
+  axios.get('/viewresult/'+this.state.useremail).then((res)=>
   {
     console.log("res",res.data)
     let db= this.state.db
@@ -782,7 +782,7 @@ console.log("this.state.db.viewresult",this.state.db.viewresult)
 
 adminresult(){
 
-  axios.get('http://localhost:8081/adminresult').then((res)=>
+  axios.get('/adminresult').then((res)=>
   {
     let db= this.state.db
     let l=res.data
@@ -803,7 +803,7 @@ this.setState({
 
 // updatequiz(p){
 
-//   axios.get('http://localhost:8081/cquiz/'+p.qname).then((res)=>
+//   axios.get('/cquiz/'+p.qname).then((res)=>
 //   {
 //     let l=res.data
 //      let db=this.state.db;
@@ -824,7 +824,7 @@ this.setState({
 //   let arr=this.state.arr
 //   console.log("arr",arr)
   
-//   axios.put('http://localhost:8081/updatequiz/'+this.state.db.cquiz._id,{qname:arr.qname,total:arr.total,points:arr.points,hr:arr.hr,
+//   axios.put('/updatequiz/'+this.state.db.cquiz._id,{qname:arr.qname,total:arr.total,points:arr.points,hr:arr.hr,
 //                                                                 min:arr.min,sec:arr.sec,typeq:arr.typeq,})  .then((res)=>{
 //      console.log(res)
 //      console.log("inside api")
@@ -836,7 +836,7 @@ this.setState({
 //   console.log(error);
 //   });
 
-// // axios.put('http://localhost:8081/updatetotal/'+db.cquiz.qname, { total: db.cquiz.total }) .then(response => {
+// // axios.put('/updatetotal/'+db.cquiz.qname, { total: db.cquiz.total }) .then(response => {
 // //   console.log(response);
 // //   })
 // // .catch(error => {
@@ -853,7 +853,7 @@ this.setState({
 //  arr.typeq=""
 //  this.setState({arr:arr})
 
-// //  axios.get("http://localhost:8081/getquiz").then((res)=>
+// //  axios.get("/getquiz").then((res)=>
 // //  {
 // //    console.log("inside get list api")
 // // let db=this.state.db
@@ -871,7 +871,7 @@ viewquiz(p){
   console.log("this.state.db.cquiz.qname",this.state.db.cquiz.qname)
   this.setState({db:db})
 
-  axios.get('http://localhost:8081/viewquestion/'+this.state.db.cquiz.qname).then((res)=>
+  axios.get('/viewquestion/'+this.state.db.cquiz.qname).then((res)=>
   {
     console.log(res.data)
       db.question=res.data
@@ -913,7 +913,7 @@ if(arr.length){
   this.setState({db:db,search:search})
 }
 else{
-  axios.get("http://localhost:8081/getquiz").then((res)=>
+  axios.get("/getquiz").then((res)=>
          {
                console.log("inside axios")
               let db=this.state.db

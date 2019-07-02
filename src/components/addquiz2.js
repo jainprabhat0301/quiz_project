@@ -65,8 +65,8 @@ function AddQuiz ({getvalue,createquiz,flag,qname,points,hr,min,sec,typeq,clearq
       <Link to='/addquiz2'> <MDBBtn color="warning" type="button" onClick={()=>clearquiz()}><MDBIcon icon="trash-alt" /> Clear</MDBBtn></Link>
 
   { updateflag==1
-    ? <Link to='/'> <MDBBtn color="success" type="button" onClick={()=>{setupdatequiz();clearquiz()}}><MDBIcon far icon="times-circle" />    Save </MDBBtn></Link>
-    :  <Link to='/'> <MDBBtn color="success" type="button" onClick={()=>{createquiz();clearquiz()}}><MDBIcon far icon="times-circle" />    Save </MDBBtn></Link>
+    ? <Link to='/'> <MDBBtn color="success" type="button" onClick={()=>{setupdatequiz();clearquiz()}}><MDBIcon far icon="folder-open" />    Save </MDBBtn></Link>
+    :  <Link to='/'> <MDBBtn color="success" type="button" onClick={()=>{createquiz();clearquiz()}}><MDBIcon far icon="folder-open" />    Save </MDBBtn></Link>
   }
       
       </Form>
