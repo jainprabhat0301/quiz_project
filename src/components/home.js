@@ -40,7 +40,7 @@ function Home({db,admin,getindex,removequiz,createansls,getanswer,loginCheck,vie
 
 <div>
 <MDBDropdown>
-      <MDBDropdownToggle caret color="primary">
+      <MDBDropdownToggle caret color="info">
         Sort Quiz By
       </MDBDropdownToggle>
       <MDBDropdownMenu basic>
