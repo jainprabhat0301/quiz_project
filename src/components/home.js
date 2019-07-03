@@ -8,11 +8,11 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import ListGroup from 'react-bootstrap/ListGroup';
 //import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
-import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle,MDBAnimation, MDBCardText, MDBCol,MDBListGroup, MDBListGroupItem, MDBContainer,MDBIcon  } from 'mdbreact';
+import { MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem,MDBBtn, MDBCard, MDBAlert,MDBCardBody, MDBCardImage, MDBCardTitle,MDBAnimation, MDBCardText, MDBCol,MDBListGroup, MDBListGroupItem, MDBContainer,MDBIcon  } from 'mdbreact';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 
-function Home({db,admin,getindex,removequiz,createansls,getanswer,loginCheck,viewquiz,search,useremail,
+function Home({db,admin,getindex,removequiz,createansls,getanswer,loginCheck,viewquiz,search,useremail,sortbyname_asc,sortbyname_desc,
                 user,logOut,time,googleLogin,hour,minu,seco,viewresult,adminresult,getsearch}){
     return (
       <div  className='cream'>
@@ -32,7 +32,32 @@ function Home({db,admin,getindex,removequiz,createansls,getanswer,loginCheck,vie
     </Nav>
 
     <Form inline>
-      <FormControl type="text" placeholder="Search" className="mr-sm-2" value={search} onChange={(e)=>getsearch(e)} />
+      {/* <FormControl type="text" placeholder="Search" className="mr-sm-2" value={search} onChange={(e)=>getsearch(e)} /> */}
+
+{typeof(user)=="string"  || user==null
+? <p></p>
+:
+
+<div>
+<MDBDropdown>
+      <MDBDropdownToggle caret color="primary">
+        Sort Quiz By
+      </MDBDropdownToggle>
+      <MDBDropdownMenu basic>
+        <MDBDropdownItem  onClick={()=>sortbyname_asc()} >Name(asc)</MDBDropdownItem>
+        <MDBDropdownItem  onClick={()=>sortbyname_desc()} >Name(desc)</MDBDropdownItem>
+        {/* <MDBDropdownItem>Something else here</MDBDropdownItem>
+        <MDBDropdownItem divider />
+        <MDBDropdownItem>Separated link</MDBDropdownItem> */}
+      </MDBDropdownMenu>
+    </MDBDropdown>
+</div>
+}
+
+{typeof(user)=="string"  || user==null
+?  <h4 style={{color:"white"}}>Please Login or Register to start quiz  </h4> 
+:<p></p>
+}
 
      {typeof(user)=="string" || user==null
       ?<p></p>
@@ -55,6 +80,8 @@ function Home({db,admin,getindex,removequiz,createansls,getanswer,loginCheck,vie
   </Navbar>
 
 <br/><br/><br/><br/><br/><br/><br/><br/>
+
+
 
 <div className="container">
        <div className="row">
@@ -100,7 +127,7 @@ function Home({db,admin,getindex,removequiz,createansls,getanswer,loginCheck,vie
       } 
       
       
-      {useremail=="" || admin=="adminquiz@gmail.com"
+      {useremail=="" || admin=="adminquiz@gmail.com" || useremail==null
       ?<p></p>
         : p.total==0 
       ?<p></p>  // ?   <Link to="/"> <MDBBtn class="btn btn-success" onClick={()=>{viewquiz(p);}} ><MDBIcon icon="play" /> Start Quiz</MDBBtn></Link> 

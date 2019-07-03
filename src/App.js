@@ -216,11 +216,12 @@ const firebaseConfig = {
 console.log("did mount user",this.state.user.email)
 
 //------------------------Get Quiz-------------//
-    axios.get("/getquiz").then((res)=>
+    axios.get("http://localhost:8081/getquiz").then((res)=>
     {
       //console.log(res.data)
 let db=this.state.db
 db.list=res.data
+//db.list.reverse()
         this.setState({db:db})
      //   console.log("list",this.state.db.list)
     })
@@ -364,7 +365,7 @@ emailSignUp=()=>{
      let obj={qname:this.state.arr.qname,total:0,points:this.state.arr.points,hr:this.state.arr.hr,
                 min:this.state.arr.min,sec:this.state.arr.sec,typeq:this.state.arr.typeq}
 
-  axios.post('/quiz/',obj)
+  axios.post('http://localhost:8081/quiz/',obj)
   .then((res)=>{
   console.log(res.data)
    })  
@@ -380,6 +381,7 @@ emailSignUp=()=>{
      arr.sec=""
     arr.typeq=""
 
+  //  db.list.reverse()
       this.setState({
         db:db,flag:flag,arr:arr
       })
@@ -416,7 +418,7 @@ emailSignUp=()=>{
                 op4:this.state.ques.op4,correctop:this.state.ques.correctop,status:this.state.status}
         
 
-        axios.post('/question/',obj)
+        axios.post('http://localhost:8081/question/',obj)
       .then((res)=>{      
           })      
   
@@ -433,7 +435,7 @@ emailSignUp=()=>{
           
       db.cquiz.total+=1
 
-      axios.put('/updatetotal/'+db.cquiz.qname, { total: db.cquiz.total }) .then(response => {
+      axios.put('http://localhost:8081/updatetotal/'+db.cquiz.qname, { total: db.cquiz.total }) .then(response => {
           console.log(response);
           })
       .catch(error => {
@@ -473,7 +475,7 @@ console.log("this.state.db.cquiz",this.state.db.cquiz)
       db.cquiz=p
       this.setState({db:db})
 
-      axios.delete('/delquiz/'+p.qname).then((res)=>{ //Delete Quiz
+      axios.delete('http://localhost:8081/delquiz/'+p.qname).then((res)=>{ //Delete Quiz
         console.log("I Have Done It")
 
         console.log(res.data)
@@ -607,7 +609,7 @@ console.log("hr,min,sec",hour,minu,seco)
    let obj={uid:this.state.useremail,quizname:this.state.db.cquiz.qname,total:this.state.db.cquiz.total,marks:marks,correctans:count,
             attempt:attempt,points:this.state.db.cquiz.points,time:time,quizdate:quizdate}
 
-    axios.post('/score/',obj)
+    axios.post('http://localhost:8081/score/',obj)
     .then((res)=>{
     console.log(res.data)
         }) 
@@ -670,13 +672,13 @@ unmarkquestion(){
 delquestion(p){
   let db=this.state.db
 
-  axios.delete('/delquestion/'+p.quesname).then((res)=>{
+  axios.delete('http://localhost:8081/delquestion/'+p.quesname).then((res)=>{
     console.log("I Have Done It") 
     console.log(res.data)
 })
   db.cquiz.total-=1
 
-  axios.put('/updatetotal/'+db.cquiz.qname, { total: db.cquiz.total }) .then(response => {
+  axios.put('http://localhost:8081/updatetotal/'+db.cquiz.qname, { total: db.cquiz.total }) .then(response => {
       console.log(response);
       })
   .catch(error => {
@@ -751,7 +753,7 @@ var time = (db.cquiz.hr * 60 * 60) + (db.cquiz.min * 60) + (db.cquiz.sec)
 
 viewresult(){ 
 console.log("email",this.state.useremail)
-  axios.get('/viewresult/'+this.state.useremail).then((res)=>
+  axios.get('http://localhost:8081/viewresult/'+this.state.useremail).then((res)=>
   {
     console.log("res",res.data)
     let db= this.state.db
@@ -782,7 +784,7 @@ console.log("this.state.db.viewresult",this.state.db.viewresult)
 
 adminresult(){
 
-  axios.get('/adminresult').then((res)=>
+  axios.get('http://localhost:8081/adminresult').then((res)=>
   {
     let db= this.state.db
     let l=res.data
@@ -871,7 +873,7 @@ viewquiz(p){
   console.log("this.state.db.cquiz.qname",this.state.db.cquiz.qname)
   this.setState({db:db})
 
-  axios.get('/viewquestion/'+this.state.db.cquiz.qname).then((res)=>
+  axios.get('http://localhost:8081/viewquestion/'+this.state.db.cquiz.qname).then((res)=>
   {
     console.log(res.data)
       db.question=res.data
@@ -913,7 +915,7 @@ if(arr.length){
   this.setState({db:db,search:search})
 }
 else{
-  axios.get("/getquiz").then((res)=>
+  axios.get("http://localhost:8081/getquiz").then((res)=>
          {
                console.log("inside axios")
               let db=this.state.db
@@ -931,6 +933,53 @@ cleartable(){
 }
 
 
+sortbyname_asc(){
+  let db=this.state.db
+  let ls=[]
+  for(var i=0;i<db.list.length;i++){
+    ls.push(db.list[i].qname)
+  }
+  console.log("ls",ls)
+  ls.sort()
+  console.log("ls.sort()",ls)
+
+  let temp=[]
+  for(var j=0;j<db.list.length;j++){
+    for(var k=0;k<db.list.length;k++){
+      if(db.list[k].qname==ls[j])
+        temp.push(db.list[k])
+       
+    }
+  }
+  console.log("temp",temp)
+  db.list=temp
+  this.setState({db:db})
+}
+
+sortbyname_desc(){
+  let db=this.state.db
+  let ls=[]
+  for(var i=0;i<db.list.length;i++){
+    ls.push(db.list[i].qname)
+  }
+  console.log("ls",ls)
+  ls.sort()
+  ls.reverse()
+  console.log("ls.sort()",ls)
+
+  let temp=[]
+  for(var j=0;j<db.list.length;j++){
+    for(var k=0;k<db.list.length;k++){
+      if(db.list[k].qname==ls[j])
+        temp.push(db.list[k])
+       
+    }
+  }
+  console.log("temp",temp)
+  db.list=temp
+  this.setState({db:db})
+}
+
   render() {
     return (
       <div>
@@ -943,7 +992,8 @@ cleartable(){
        removequiz={this.removequiz.bind(this)}  getanswer={this.getanswer.bind(this)} 
        loginCheck={this.loginCheck.bind(this)}  logOut={this.logOut.bind(this)} googleLogin={this.googleLogin.bind(this)}
        viewresult={this.viewresult.bind(this)} adminresult={this.adminresult.bind(this)} 
-       viewquiz={this.viewquiz.bind(this)}    getsearch={this.getsearch.bind(this)}
+       viewquiz={this.viewquiz.bind(this)}    getsearch={this.getsearch.bind(this)} sortbyname_asc={this.sortbyname_asc.bind(this)} 
+       sortbyname_desc={this.sortbyname_desc.bind(this)}
        >
       </Home>}/>
 
